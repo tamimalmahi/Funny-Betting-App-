@@ -75,34 +75,48 @@ def actGame(amount, loss):
        print(number, end=" ", flush=True)
        time.sleep(0.3)
     
-    if (a == b != c) or (a != b != c):
-        print("Win Forward!!\t\tToo close for JACKPOT")
-        amount = amount - (bet * 0.2)
-        print(f"Loss: {bet * 0.2}")
+    if a == b and b != c:
+        print("\t\tWin Forward!!\t\tToo close for JACKPOT")
+        amount = amount + (bet * 0.2)
+        print(f"Profit: +{bet * 0.2}")
         loss = loss + (bet * 0.2)
         playAgain(amount, loss)
-    elif a != b == c:
-        print("Win Backward!!\t\tToo close for JACKPOT")
-        amount = amount - (bet * 0.2)
-        print(f"Loss: {bet * 0.2}")
+    elif a != b and b == c:
+        print("\t\tWin Backward!!\t\tToo close for JACKPOT")
+        amount = amount + (bet * 0.2)
+        print(f"Profit: +{bet * 0.2}")
         loss = loss + (bet * 0.2)
         playAgain(amount, loss)
-    elif a != b != c:
-        print("Badluck this time!!!")
+    elif a == c and a != b:
+        print("\t\tWin Seqience!!\t\tToo close for JACKPOT")
+        amount = amount + (bet * 0.3)
+        print(f"Profit: +{bet * 0.3}")
+        loss = loss + (bet * 0.3)
+        playAgain(amount, loss)
+    elif a+1 == b and b+1 == c:
+        print("\t\tWin Seqience!!\t\tToo close for JACKPOT")
+        amount = amount + (bet * 0.3)
+        print(f"Profit: +{bet * 0.3}")
+        loss = loss + (bet * 0.3)
+        playAgain(amount, loss)
+    elif a != b and b != c:
+        print("\t\tBadluck this time!!!")
         print(f"Loss: {bet}")
-        loss = loss + (bet)
+        loss = loss - bet
         amount = amount - bet
         playAgain(amount, loss)
     elif a == b == c:
        print()
        print("\t\t\t\tBIG WIN!!")
        print("\t\t\t\tJACKPOOOOT")
+       print(f"\t\t\t\tProfit: +{bet * 20}")
        amount = amount + (bet * 20)
-       loss = loss - (bet * 20)
+       loss = loss + (bet * 20)
        playAgain(amount, loss)
 
 def balInq(loss):
     os.system('cls')
+    print("admin panel")
     print(f"Total loss: {loss}")
     backMainManu(amount, loss)
 
